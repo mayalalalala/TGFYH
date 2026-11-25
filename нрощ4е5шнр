@@ -1,0 +1,27 @@
+
+from flask import Flask
+
+app = Flask(__name__)
+file1 = open("index.html", encoding="utf-8")
+code1 = file1.read() # в code теперь лежит весь текст из файла index.html
+file1.close()
+file2 = open("index.html2", encoding="utf-8")
+code2 = file2.read() # в code теперь лежит весь текст из файла index.html
+file2.close()
+code = """
+    <h1>Мой первый пост!🎂</h1>
+    <i>19.11.2026</i>
+    <p>Здесь я планирую рассказывать от тортах, их приготовлении , лайфаки и советы.</p>
+    <p>Мои любимые вкусы тортов это: <b>Вишня - шоколад</b> и <b>Рафаэлло</b>.</p>
+    <i>Рада знакомству!</i>
+    <h1>Это мой 2 пост!🎂</h1>
+    <i>19.11.2026</i>
+    <s>Чтобы сливки хорошо взбились нужно чтобы они постояли в тепле.</s>
+    <p>Нужно взбивать холодные сливки для наилучшого взбивания.</p>
+    <p>На этом все!</p>
+"""
+@app.route("/")
+def lalala():
+    return code + code1 + code2 
+
+app.run(debug=True)
