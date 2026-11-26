@@ -1,0 +1,24 @@
+from flask import Flask
+import codecs
+
+app = Flask(__name__)
+@app.route("/")
+def main_page():
+    file = open("index.html" ,encoding="utf-8")
+    code = file.read()
+    
+    return code
+
+    
+@app.route("/blog/1")
+def blog_page1():
+    file = open("index1.html",encoding="utf-8")
+    code = file.read()
+    return code
+
+@app.route("/blog/2")
+def blog_page2():
+    file = open("index2.html",encoding="utf-8")
+    code = file.read()
+    return code
+app.run(debug=True)
